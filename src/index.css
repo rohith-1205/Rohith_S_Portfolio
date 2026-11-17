@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  
+  html.light {
+    color-scheme: light;
+  }
+
+  body {
+    @apply transition-colors duration-300;
+  }
+}
+
+/* Custom Glassmorphism Surface Utilities */
+@layer components {
+  .glass-card {
+    @apply bg-white/[0.04] dark:bg-white/[0.04] bg-slate-900/[0.03] backdrop-blur-md border border-white/10 dark:border-white/10 border-slate-200/80 rounded-2xl transition-all duration-300;
+  }
+
+  .glass-card-hover {
+    @apply hover:border-accent-blue/40 hover:shadow-lg hover:shadow-accent-blue/10 dark:hover:shadow-accent-blue/5;
+  }
+
+  /* Vibrant Accent Gradient Text */
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent-blue via-accent-violet to-accent-cyan bg-clip-text text-transparent;
+  }
+
+  /* Secondary Accent Gradients */
+  .text-gradient-emerald {
+    @apply bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-amber {
+    @apply bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent;
+  }
+
+  /* Glowing button styles */
+  .btn-gradient-primary {
+    @apply relative inline-flex items-center justify-center font-medium rounded-xl text-white transition-all duration-300 shadow-md shadow-accent-blue/20 hover:shadow-lg hover:shadow-accent-blue/30 active:scale-[0.98] overflow-hidden;
+    background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 50%, #06B6D4 100%);
+  }
+
+  .btn-gradient-outline {
+    @apply relative inline-flex items-center justify-center font-medium rounded-xl transition-all duration-300 active:scale-[0.98] border border-transparent bg-origin-border;
+    background-image: linear-gradient(#0B1020, #0B1020), linear-gradient(135deg, #3B82F6, #8B5CF6, #06B6D4);
+    background-clip: padding-box, border-box;
+  }
+
+  .light .btn-gradient-outline {
+    background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(135deg, #3B82F6, #8B5CF6, #06B6D4);
+    background-clip: padding-box, border-box;
+  }
+}
+
+/* Subtle Hero Grid Mesh Background */
+.hero-grid-pattern {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(59, 130, 246, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(59, 130, 246, 0.07) 1px, transparent 1px);
+}
+
+.light .hero-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(59, 130, 246, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
+}
+
+/* Custom Scrollbar for Sleek Look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B1020;
+}
+
+.light ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Respect user's reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
